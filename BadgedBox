@@ -1,0 +1,53 @@
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import com.example.exampleeee.ui.theme.ExampleeeeTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            ExampleeeeTheme {
+                Surface(color = MaterialTheme.colors.background){
+                    BadgeScreen()
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun BadgeScreen(){
+    BottomNavigation {
+        BottomNavigationItem(
+            icon = {
+                BadgedBox(
+                    badge = {
+                        Badge {
+                            Text(text = "11")
+                        }
+                    }
+                ) {
+                    Icon(
+                        Icons.Filled.Favorite,
+                        contentDescription = "icon"
+                    )
+                }
+            },
+            selected = false,
+            onClick = {}
+        )
+    }
+}
